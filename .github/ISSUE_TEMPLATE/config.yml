@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 安全漏洞（私密）
+    url: https://github.com/xyan8921/Intdeck-Baseline/security/policy
+    about: 请优先按 SECURITY.md 私密上报，勿在公开 Issue 贴细节
+  - name: Intdone 商业主仓
+    url: https://github.com/xyan8921/Intdone
+    about: Console、C/B 产品、/dev 闭源能力 — 不在本仓受理

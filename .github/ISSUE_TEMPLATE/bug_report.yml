@@ -1,0 +1,30 @@
+name: Bug 报告
+description: src/core、文档、门户站或 CI 的可复现缺陷
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本仓为 **baseline 开源冻结基线**，不含 Console。请先确认问题属于 `src/core/`、`docs/` 或 `apps/baseline-site/`。
+  - type: input
+    id: version
+    attributes:
+      label: 版本 / tag
+      placeholder: "v0.1.0 或 main@sha"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为

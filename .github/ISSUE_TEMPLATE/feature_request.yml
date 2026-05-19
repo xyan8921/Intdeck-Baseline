@@ -1,0 +1,32 @@
+name: 功能 / 增强
+description: 门户、文档、skills/contributor 或治理流程改进（须符合 MIT 与无双向 merge 原则）
+title: "[feat]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **禁止**：要求合并闭源 Intdone 主仓实现、引入默认远程下载执行/插件市场（见威胁模型 T6）。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决什么问题
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 区域
+      options:
+        - apps/baseline-site（门户）
+        - src/core
+        - docs
+        - skills/contributor
+        - CI / 工程
+        - 治理 / 发布
