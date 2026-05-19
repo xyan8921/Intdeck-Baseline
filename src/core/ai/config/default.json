@@ -1,0 +1,32 @@
+{
+  "templateId": "default",
+  "clarifyQuestions": [
+    { "id": "goal", "text": "你希望达成的核心目标是什么？", "type": "text" },
+    { "id": "constraint", "text": "有哪些时间或预算上的硬约束？", "type": "text" }
+  ],
+  "planTasks": [
+    { "id": "clarify", "title": "澄清目标与约束", "status": "todo" },
+    { "id": "draft", "title": "产出初版方案", "status": "todo" },
+    { "id": "review", "title": "用户确认与修订", "status": "todo" }
+  ],
+  "planMilestones": [
+    { "id": "m1", "title": "目标对齐", "at": "T-3d" },
+    { "id": "m2", "title": "方案定稿", "at": "T" }
+  ],
+  "variations": [
+    {
+      "id": "minimal",
+      "title": "极简版",
+      "description": "只做必要步骤，适合时间紧。"
+    },
+    {
+      "id": "standard",
+      "title": "标准版",
+      "description": "平衡细节与执行成本。"
+    }
+  ],
+  "keywords": {
+    "list": ["意图规划", "方案", "执行", "本地", "可审计"],
+    "brief": "基于当前模板与参数生成的结构化意图与执行要点摘要。"
+  }
+}

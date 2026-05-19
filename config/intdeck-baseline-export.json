@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "description": "Intdeck baseline export allowlist; keep in sync with scripts/export-intdeck-baseline.mjs and redteam T6 (redteamGate.v0.test.ts). See INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md sections 3.5 and 4.2.",
+  "includeDirs": ["src/core"],
+  "includeFiles": ["ETHICS.md", "LICENSE", "config/intdeck-baseline-export.json"],
+  "docsBasenamePrefix": "INTDONE_INTDECK_"
+}

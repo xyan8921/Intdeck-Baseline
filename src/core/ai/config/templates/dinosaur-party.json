@@ -1,0 +1,48 @@
+{
+  "templateId": "dinosaur-party",
+  "clarifyQuestions": [
+    { "id": "age", "text": "孩子几岁？", "type": "text" },
+    { "id": "guestCount", "text": "预计有多少小朋友参加？", "type": "text" },
+    { "id": "budget", "text": "预算大约多少元？", "type": "text" },
+    { "id": "location", "text": "活动地点在哪里（如：家中、小区活动室、室外公园）？", "type": "text" },
+    {
+      "id": "theme",
+      "text": "更偏向哪种风格？",
+      "type": "single_choice",
+      "options": [
+        { "id": "dinosaur", "label": "恐龙冒险" },
+        { "id": "space", "label": "太空探险" },
+        { "id": "mixed", "label": "不确定 / 交给孩子决定" }
+      ]
+    }
+  ],
+  "planTasks": [
+    { "id": "define-theme", "title": "确认派对主题与风格", "status": "todo" },
+    { "id": "book-location", "title": "确定并预定活动地点", "status": "todo" },
+    { "id": "purchase-decor", "title": "购买装饰与道具（恐龙/太空相关）", "status": "todo" },
+    { "id": "order-cake", "title": "预定生日蛋糕", "status": "todo" },
+    { "id": "design-games", "title": "设计 2–3 个适龄小游戏", "status": "todo" },
+    { "id": "schedule-flow", "title": "安排整体流程与时间表", "status": "todo" }
+  ],
+  "planMilestones": [
+    { "id": "plan-confirmed", "title": "方案确认", "at": "T-7d" },
+    { "id": "materials-ready", "title": "物料准备完成", "at": "T-2d" },
+    { "id": "event-day", "title": "派对当天", "at": "T" }
+  ],
+  "variations": [
+    {
+      "id": "dinosaur-focused",
+      "title": "恐龙主题强化版",
+      "description": "装饰与活动以恐龙为主，适合已经明确喜欢恐龙的孩子。"
+    },
+    {
+      "id": "space-focused",
+      "title": "太空主题强化版",
+      "description": "以宇航员与星空为主线，适合偏爱太空故事的孩子。"
+    }
+  ],
+  "keywords": {
+    "list": ["儿童生日", "恐龙主题", "派对", "活动策划", "亲子", "安全"],
+    "brief": "适合 5–10 岁儿童的恐龙主题生日派对，包含装饰、游戏、蛋糕与安全提示的完整小型活动方案。"
+  }
+}

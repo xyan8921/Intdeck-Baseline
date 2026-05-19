@@ -1,0 +1,37 @@
+{
+  "templateId": "academic-preparation",
+  "subCategoryId": "academic-preparation",
+  "clarifyQuestions": [
+    { "id": "examTarget", "text": "目标考试/学段是什么？", "type": "text" },
+    { "id": "timeline", "text": "距离目标时间还有多久？", "type": "text" },
+    { "id": "dailyHours", "text": "每天可投入多少学习时长？", "type": "text" },
+    { "id": "weakSubjects", "text": "最需要补强的科目有哪些？", "type": "text" }
+  ],
+  "planTasks": [
+    { "id": "diagnosis", "title": "梳理当前水平与薄弱点", "status": "todo" },
+    { "id": "schedule", "title": "拆分周计划与日计划", "status": "todo" },
+    { "id": "practice", "title": "配置题目训练与错题复盘", "status": "todo" },
+    { "id": "review", "title": "按周评估并调整节奏", "status": "todo" }
+  ],
+  "planMilestones": [
+    { "id": "m1", "title": "学习路径确认", "at": "第1周" },
+    { "id": "m2", "title": "阶段测评达标", "at": "中期" },
+    { "id": "m3", "title": "冲刺计划收口", "at": "考前" }
+  ],
+  "variations": [
+    {
+      "id": "high-intensity",
+      "title": "冲刺强化版",
+      "description": "适合时间紧张，强调高频训练与复盘。"
+    },
+    {
+      "id": "balanced",
+      "title": "稳态平衡版",
+      "description": "强调节奏稳定，兼顾主科提升与恢复。"
+    }
+  ],
+  "keywords": {
+    "list": ["学习计划", "备考", "阶段目标", "错题复盘", "时间分配", "执行节奏"],
+    "brief": "围绕目标考试的备考规划，覆盖每日时长分配、薄弱科目补强、阶段测评与复盘机制。"
+  }
+}
