@@ -1,0 +1,28 @@
+{
+  "name": "intdeck-baseline",
+  "version": "0.1.2",
+  "description": "Intdeck baseline — frozen open-source governance core",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xyan8921/Intdeck-Baseline.git"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "lint": "eslint src/core src/config --ext .ts --report-unused-disable-directives --max-warnings 0",
+    "redteam:v0": "vitest run src/core/redteam/redteamGate.v0.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.55.0",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.2.2",
+    "vitest": "3.2.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
