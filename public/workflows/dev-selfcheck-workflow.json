@@ -1,0 +1,25 @@
+{
+  "id": "dev-selfcheck-workflow",
+  "scenarioId": "dev-selfcheck",
+  "steps": [
+    {
+      "id": "gate-check",
+      "skillId": "dev-self-check",
+      "inputTemplate": {
+        "phaseId": "{{phaseId}}",
+        "gates": "{{gates}}",
+        "dryRun": "{{dryRun}}"
+      },
+      "fallback": {
+        "type": "skip",
+        "description": "自检 Skill 失败时跳过，由 runner 记录错误"
+      }
+    }
+  ],
+  "metadata": {
+    "name": "AI 自检工作流",
+    "description": "纯自检工作流：接收门禁列表，生成 SelfCheckReport。在 CLI runner 中用于每阶段完成后的门禁验证。",
+    "outputFormat": "json",
+    "ethicalPrinciples": ["E3", "E6"]
+  }
+}

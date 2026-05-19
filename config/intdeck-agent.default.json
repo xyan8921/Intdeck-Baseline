@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "label": "default",
+  "capabilities": {
+    "llm": false,
+    "thirdPartyAPI": false,
+    "networkEgress": "deny"
+  }
+}

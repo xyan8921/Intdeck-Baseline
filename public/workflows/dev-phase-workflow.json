@@ -1,0 +1,53 @@
+{
+  "id": "dev-phase-workflow",
+  "scenarioId": "dev-phase",
+  "steps": [
+    {
+      "id": "plan",
+      "skillId": "dev-phase-planner",
+      "inputTemplate": {
+        "phaseId": "{{phaseId}}",
+        "mode": "plan",
+        "completedTaskIds": "{{completedTaskIds}}"
+      },
+      "fallback": {
+        "type": "simplified",
+        "alternativeSkillId": "dev-phase-planner",
+        "description": "降级为 next-tasks 模式：仅输出最高优先级3项任务"
+      }
+    },
+    {
+      "id": "self-check",
+      "skillId": "dev-self-check",
+      "dependsOn": ["plan"],
+      "inputTemplate": {
+        "phaseId": "{{phaseId}}",
+        "dryRun": "true"
+      },
+      "fallback": {
+        "type": "skip",
+        "description": "自检 Skill 不可用时跳过（不阻断规划输出）"
+      }
+    },
+    {
+      "id": "doc-backfill",
+      "skillId": "dev-doc-backfill",
+      "dependsOn": ["plan"],
+      "inputTemplate": {
+        "phaseId": "{{phaseId}}",
+        "deliverables": "{{deliverables}}",
+        "includeRedteamDocs": "{{includeRedteamDocs}}"
+      },
+      "fallback": {
+        "type": "skip",
+        "description": "文档回填 Skill 不可用时跳过"
+      }
+    }
+  ],
+  "metadata": {
+    "name": "AI 开发阶段工作流",
+    "description": "AI 助手接管开发的完整工作流：阶段规划 → 自检清单生成 → 文档回填清单生成。供 /dev/workflow-lab 与 scripts/dev-phase-runner.mjs 共用。",
+    "outputFormat": "json",
+    "ethicalPrinciples": ["E3", "E4", "E6"]
+  }
+}

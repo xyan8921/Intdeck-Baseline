@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "description": "AI 开发助手配置 — 阶段映射、门禁、威胁模型、红队场景表。供 scripts/dev-phase-runner.mjs 与 DevPhaseSkill / DevSelfCheckSkill 消费。",
+  "updatedAt": "2026-05-19",
+
+  "currentPhase": "B4",
+
+  "phases": {
+    "stage-A": {
+      "name": "阶段 A — 可上线稳态",
+      "status": "done",
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §4.x 阶段 A",
+      "requiredChecks": ["lint", "test", "build", "smoke:profile", "redteam:v0"],
+      "docsToBackfill": [
+        "docs/INTDONE_TECH_PLAN_v1.md",
+        "docs/INTDONE_TEST_RELEASE_BASELINE_v1.md"
+      ],
+      "threatScenarios": ["T1-injection", "T2-egress", "T3-privilege"],
+      "crossRefs": [
+        "INTDONE_TEST_RELEASE_BASELINE_v1.md §3",
+        "INTDONE_SMOKE_CHECKLIST_PROFILE_v1.md"
+      ]
+    },
+    "B0": {
+      "name": "阶段 B0 — 后端本地闭环（契约 + Stub）",
+      "status": "done",
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §4.x 阶段 B 里程碑 B0",
+      "requiredChecks": ["lint", "test", "build", "redteam:v0"],
+      "docsToBackfill": [
+        "docs/INTDONE_STAGE_B_CONTRACTS_PREWORK_v1.md",
+        "docs/INTDONE_TECH_PLAN_v1.md"
+      ],
+      "threatScenarios": ["T1-injection", "T2-egress", "T4-audit-gap"],
+      "crossRefs": [
+        "INTDONE_STAGE_B_CONTRACTS_PREWORK_v1.md §4.2",
+        "INTDONE_FINANCIAL_ARCHITECTURE_v1.md"
+      ]
+    },
+    "B1": {
+      "name": "阶段 B1 — 后端 HTTP Client 骨架",
+      "status": "done",
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §4.x 阶段 B B1",
+      "requiredChecks": ["lint", "test", "build", "smoke:profile", "redteam:v0"],
+      "docsToBackfill": [
+        "docs/INTDONE_TECH_PLAN_v1.md",
+        "docs/INTDONE_STAGE_B_CONTRACTS_PREWORK_v1.md",
+        "DEPLOYMENT.md"
+      ],
+      "threatScenarios": ["T1-injection", "T2-egress", "T4-audit-gap", "T5-idempotency"],
+      "crossRefs": [
+        "INTDONE_FINANCIAL_ARCHITECTURE_v1.md §3",
+        "INTDONE_ETHICS_RULE_ALIGNMENT_v1.md v1.4.1"
+      ],
+      "nextPhase": "FE-SRV-B1"
+    },
+    "FE-SRV-B1": {
+      "name": "FE-SRV-B1 — 审计 DB 落库与 trace 跨服务关联",
+      "status": "done",
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §4.8.1 FE-SRV-B1",
+      "requiredChecks": ["lint", "test", "build", "redteam:v0"],
+      "docsToBackfill": [
+        "docs/INTDONE_TECH_PLAN_v1.md",
+        "docs/INTDONE_STAGE_B_CONTRACTS_PREWORK_v1.md"
+      ],
+      "threatScenarios": ["T2-egress", "T4-audit-gap", "T5-idempotency"],
+      "crossRefs": [
+        "INTDONE_FINANCIAL_ARCHITECTURE_v1.md",
+        "INTDONE_STAGE_B_CONTRACTS_PREWORK_v1.md §4.2"
+      ],
+      "nextPhase": "B2"
+    },
+    "B2": {
+      "name": "阶段 B2 — 威胁模型白皮书 + 红队最小集扩展",
+      "status": "done",
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §0.2.2 B2",
+      "requiredChecks": ["lint", "test", "build", "redteam:v0", "export:intdeck-baseline"],
+      "docsToBackfill": [
+        "docs/INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md",
+        "docs/INTDONE_TECH_PLAN_v1.md"
+      ],
+      "threatScenarios": ["T1-injection", "T2-egress", "T3-privilege", "T4-audit-gap", "T5-idempotency", "T6-supply-chain"],
+      "crossRefs": [
+        "INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md",
+        "DEPLOYMENT.md R2-b"
+      ],
+      "nextPhase": "B3"
+    },
+    "B3": {
+      "name": "阶段 B3 — 拆仓准备",
+      "status": "done",
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §0.2.2 B3 / §K",
+      "requiredChecks": ["lint", "test", "build", "redteam:v0", "export:intdeck-baseline"],
+      "docsToBackfill": [
+        "docs/INTDONE_INTDECK_BASELINE_EXPORT_GUIDE_v1.md",
+        "docs/INTDONE_TECH_PLAN_v1.md",
+        "docs/INTDECK_DEV_NON_TECHNICAL_HANDBOOK_v1.md",
+        "docs/INTDONE_INTDECK_QUARTERLY_META_DISCLOSURE_TEMPLATE_v1.md",
+        "docs/INTDECK_BASELINE_FETCH_MANIFEST_DRAFT_v1.md",
+        "docs/INTDECK_AGENT_EVIDENCE_PACK_v1.md"
+      ],
+      "threatScenarios": ["T2-egress", "T6-supply-chain"],
+      "crossRefs": [
+        "INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md",
+        "INTDONE_INTDECK_BASELINE_EXPORT_GUIDE_v1.md"
+      ],
+      "nextPhase": "B4"
+    },
+    "B4": {
+      "name": "阶段 B4 — baseline 独立仓首版",
+      "status": "done",
+      "observationNote": "已移交社区自治；主仓无 baseline 反向 merge；见 INTDECK_BASELINE_HANDOFF_TO_COMMUNITY_v1.md",
+      "b4Release": {
+        "repo": "xyan8921/Intdeck-Baseline",
+        "coreTag": "v0.1.0",
+        "portalTag": "v0.1.2",
+        "roadmapIssue": 14,
+        "handoffDoc": "docs/INTDECK_BASELINE_HANDOFF_TO_COMMUNITY_v1.md",
+        "sourceExportCommit": "94bf5939677460cb2abd4f099f53b839cbb50a8c",
+        "productionDomain": "www.baseline.intdeck.com",
+        "issuesUrl": "https://github.com/xyan8921/Intdeck-Baseline/issues",
+        "noReverseMergeToIntdone": true
+      },
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §0.2.2 B4 / INTDECK_BASELINE_B4_RUNBOOK_v1.md",
+      "requiredChecks": ["lint", "test", "build", "redteam:v0", "export:intdeck-baseline", "scan:baseline-secrets"],
+      "docsToBackfill": [
+        "docs/INTDECK_BASELINE_B4_RUNBOOK_v1.md",
+        "docs/INTDECK_B4_CLOSEOUT_v1.md",
+        "docs/INTDECK_BASELINE_HANDOFF_TO_COMMUNITY_v1.md",
+        "docs/INTDECK_MONOREPO_LAYOUT_AND_SPLIT_PATHS_v2.md",
+        "docs/INTDONE_TECH_PLAN_v1.md"
+      ],
+      "threatScenarios": ["T6-supply-chain"],
+      "crossRefs": [
+        "INTDONE_INTDECK_BASELINE_SPLIT_AND_META_SYNC_CHECKLIST_v1.md",
+        "Intdeck/SPLIT_PATHS.md"
+      ],
+      "nextPhase": "stage-C"
+    },
+    "stage-C": {
+      "name": "阶段 C — 数据库接入（触发式）",
+      "status": "pending",
+      "techPlanRef": "INTDONE_TECH_PLAN_v1.md §4 阶段 C",
+      "requiredChecks": ["lint", "test", "build", "redteam:v0"],
+      "docsToBackfill": [
+        "docs/INTDONE_TECH_PLAN_v1.md",
+        "docs/INTDONE_DATA_ML_IMPLEMENTATION_v1.md"
+      ],
+      "threatScenarios": ["T1-injection", "T2-egress", "T3-privilege", "T4-audit-gap", "T7-data-sovereignty"],
+      "crossRefs": [
+        "INTDONE_DATA_ML_IMPLEMENTATION_v1.md",
+        "INTDONE_BACKEND_MINIMAL_ARCHITECTURE_v1.md"
+      ],
+      "triggerCondition": "见 INTDONE_TECH_PLAN_v1.md §3.1 数据库触发条件"
+    }
+  },
+
+  "threatModel": {
+    "schemaVersion": 1,
+    "ref": "docs/INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md",
+    "scenarios": {
+      "T1-injection": {
+        "name": "提示注入 / 输入篡改",
+        "description": "攻击者通过自然语言输入或关键词束注入恶意指令，绕过 EthicsGuard / ContentShield",
+        "mitigations": ["localContentShield", "e2CoerciveLanguage", "e5ExclusionaryLanguage"],
+        "redteamTestRef": "src/core/redteam/redteamGate.v0.test.ts",
+        "severity": "high"
+      },
+      "T2-egress": {
+        "name": "越权出站",
+        "description": "未经确认的出站请求或绕过 networkEgress=deny 策略",
+        "mitigations": ["runOutbound confirmation gate", "compose network_mode:none", "R1-c CPU/mem limits"],
+        "redteamTestRef": "src/core/redteam/redteamGate.v0.test.ts [R2-b]",
+        "severity": "critical"
+      },
+      "T3-privilege": {
+        "name": "越权操作 / 角色提权",
+        "description": "非法角色（非 audit/finance/operator）访问财务导出或策略变更",
+        "mitigations": ["evaluatePolicy actor matrix", "FinancialExportDenialCode", "dataSensitivity check"],
+        "redteamTestRef": "src/core/redteam/redteamGate.devWorkflow.test.ts",
+        "severity": "high"
+      },
+      "T4-audit-gap": {
+        "name": "审计链路缺口",
+        "description": "操作发生但未写入 UnifiedAuditEventV1 或 financialAuditStore",
+        "mitigations": ["unifiedAuditRingLog", "financialAuditStore de-dup", "G0ActionReportV1"],
+        "redteamTestRef": "src/core/redteam/redteamGate.v0.test.ts [experience-lock]",
+        "severity": "high"
+      },
+      "T5-idempotency": {
+        "name": "重复提交 / 双写竞态",
+        "description": "财务导出重复请求写入多条审计记录导致对账失真",
+        "mitigations": ["exportSessionId 幂等键", "csvSha256 去重", "X-Idempotency-Key"],
+        "redteamTestRef": "src/core/redteam/redteamGate.devWorkflow.test.ts",
+        "severity": "medium"
+      },
+      "T6-supply-chain": {
+        "name": "供应链风险",
+        "description": "依赖包引入恶意代码或 baseline 拆仓后双向 merge 污染",
+        "mitigations": ["no-bidirectional-merge 原则", "export allowlist", "redteam:v0 CI", "npm ci lockfile"],
+        "redteamTestRef": "src/core/redteam/redteamGate.v0.test.ts [T6-supply-chain]",
+        "severity": "medium"
+      },
+      "T7-data-sovereignty": {
+        "name": "数据主权越界",
+        "description": "C 端数据流入 B 端财务通路，或跨语义复用金额记录",
+        "mitigations": ["dataDomain 分离", "personal-spending 数据域", "同源不混义原则"],
+        "redteamTestRef": "src/core/redteam/redteamGate.devWorkflow.test.ts",
+        "severity": "high"
+      }
+    }
+  },
+
+  "selfCheckGates": {
+    "lint":              { "cmd": "npm run lint",              "description": "ESLint 零警告" },
+    "test":              { "cmd": "npm test",                  "description": "Vitest 全套单测" },
+    "build":             { "cmd": "npm run build",             "description": "TypeScript + Vite 构建" },
+    "smoke:profile":     { "cmd": "npm run smoke:profile",     "description": "full/mobile-lite 双形态冒烟" },
+    "redteam:v0":        { "cmd": "npm run redteam:v0",        "description": "红队闸门 v0" },
+    "lint:themes":       { "cmd": "npm run lint:themes",       "description": "主题内容质量校验" },
+    "export:intdeck-baseline": { "cmd": "npm run export:intdeck-baseline -- --dry-run", "description": "baseline 导出 dry-run" },
+    "scan:baseline-secrets": { "cmd": "npm run scan:baseline-secrets", "description": "B4 导出物密钥粗扫" }
+  },
+
+  "commitConvention": {
+    "feat":  "新功能（C/B 产品路径）",
+    "fix":   "缺陷修复",
+    "docs":  "文档更新/回填",
+    "chore": "工程、脚本、配置变更",
+    "test":  "新增/修改测试",
+    "refactor": "重构（不改外部行为）",
+    "security": "安全加固（威胁模型闭环）"
+  },
+
+  "docBackfillTemplate": {
+    "description": "每阶段结束时须回填的最小文档集（见 INTDONE_TECH_PLAN_v1.md §0.2.4 §A）",
+    "always": [
+      "docs/INTDONE_TECH_PLAN_v1.md （阶段状态标记 ✅）",
+      "README.md （若新增 npm 脚本）",
+      "DEPLOYMENT.md （若 Docker/环境变量/产物路径变化）"
+    ],
+    "conditional": {
+      "intdeck": "docs/INTDONE_INTDECK_ARCHITECTURE_AND_TECH_DESIGN_v1.md",
+      "baseline": "docs/INTDONE_INTDECK_BASELINE_EXPORT_GUIDE_v1.md",
+      "finance":  "docs/INTDONE_FINANCIAL_ARCHITECTURE_v1.md",
+      "ethics":   "docs/INTDONE_ETHICS_RULE_ALIGNMENT_v1.md",
+      "redteam":  "docs/INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md"
+    }
+  }
+}
