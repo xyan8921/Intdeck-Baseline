@@ -30,15 +30,20 @@
 
 ---
 
-## 4. 如何运行（建议）
+## 4. 如何运行
 
-> baseline 仓库建议仅提供：测试、lint、与导出/回放工具。
+**环境**：Node ≥ 18（CI 使用 22）。与主仓一致用 `npm ci` 锁定依赖。
 
 ```bash
-npm install
-npm test
+npm ci
 npm run lint
+npm test
+npm run redteam:v0
 ```
+
+PR 与 `main` 推送会跑 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)（同上顺序）。
+
+> `src/config/`、`src/shared/utils/` 等为 `src/core` 测试契约所需的最小 shim，不在主仓 baseline 导出 allowlist 内，由本仓维护。
 
 ---
 
