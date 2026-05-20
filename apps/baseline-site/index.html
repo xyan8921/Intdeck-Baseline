@@ -3,25 +3,258 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Intdeck Baseline — MIT open-source governance runtime. Releases, docs, CONTRIBUTING, and community roadmap."
+  />
   <link rel="icon" type="image/png" href="/intdeck-favicon.png" />
-  <title>Intdeck Baseline</title>
-  <style>
-    :root { color-scheme: light dark; font-family: system-ui, sans-serif; line-height: 1.5; }
-    body { max-width: 42rem; margin: 2rem auto; padding: 0 1rem; }
-    h1 { font-size: 1.5rem; }
-    a { color: #2563eb; }
-    .meta { opacity: 0.75; font-size: 0.9rem; }
-  </style>
+  <title>Intdeck Baseline — Open Source Portal</title>
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <h1>Intdeck Baseline</h1>
-  <p class="meta">开源治理基线 · MIT · 核心 <code>v0.1.0</code> · 门户 <code>v0.1.2</code></p>
-  <p>可审计的 <code>src/core</code>、威胁模型与 Agent 证据链导出子集；不含 Console 与闭源运营数据。</p>
-  <ul>
-    <li><a href="https://github.com/xyan8921/Intdeck-Baseline">GitHub · Intdeck-Baseline</a></li>
-    <li><a href="https://github.com/xyan8921/Intdeck-Baseline/releases/latest">最新 Release</a>（核心冻结 <code>v0.1.0</code>）</li>
-    <li><a href="https://www.intdeck.com">www.intdeck.com</a>（品牌入口 · 闭源主仓）</li>
-  </ul>
-  <p class="meta">生产入口：<code>www.baseline.intdeck.com</code> · 根域 301 至 www（与其它 Intdeck 子域一致）。</p>
+  <div class="mesh-wrap">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img src="/assets/intdeck-logo.png" width="32" height="32" alt="" />
+        <span class="gradient">Intdeck Baseline</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="https://www.intdeck.com">品牌入口</a>
+        <a href="#gates">Run gates</a>
+        <a href="#docs">文档</a>
+        <a href="#boundary">边界</a>
+        <a href="https://github.com/xyan8921/Intdeck-Baseline/issues/14">#14</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="切换主题">◐</button>
+      </div>
+    </header>
+
+    <main>
+      <p class="brand-back">
+        品牌入口 → <a href="https://www.intdeck.com">www.intdeck.com</a>
+        （边界摘要与 Quick Start 摘要）
+      </p>
+
+      <section class="hero">
+        <div class="logo-glow">
+          <img src="/assets/intdeck-logo.png" width="140" height="140" alt="" aria-hidden="true" />
+        </div>
+        <p class="badge"><span aria-hidden="true">●</span> MIT · 核心 <code>v0.1.0</code> · 门户 <code>v0.2.0</code></p>
+        <h1>可治理、可审计的智能基础设施</h1>
+        <p class="tagline-en">
+          Intdeck is not trying to build smarter agents.
+          <em>It is trying to build governable intelligence infrastructure.</em>
+        </p>
+        <p class="tagline-zh">
+          Intdeck 不是在比 Agent 有多聪明，而是在做<strong>可治理、可审计</strong>的智能基础设施。
+        </p>
+        <p class="tagline-zh" style="font-size: 0.9rem;">
+          开源主场：<code>src/core</code> 治理子集、威胁模型、红队闸门与证据链；不含 Console 与闭源运营数据。
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#gates">Run gates</a>
+          <a class="btn btn-secondary" href="https://github.com/xyan8921/Intdeck-Baseline/releases/latest">Release</a>
+          <a class="btn btn-secondary" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/CONTRIBUTING.md">参与</a>
+        </div>
+      </section>
+
+      <div class="stats" aria-label="版本与门禁">
+        <div class="stat"><strong>CI</strong><span>lint · test · redteam</span></div>
+        <div class="stat"><strong>#14</strong><span>观察期路线图</span></div>
+        <div class="stat"><strong>MIT</strong><span>社区自治</span></div>
+        <div class="stat"><strong>export</strong><span>主仓单向投放</span></div>
+      </div>
+
+      <section id="gates">
+        <h2>Run gates · 本地验收</h2>
+        <p class="section-lead">15 分钟证明「可治理」；产物目录与截图位供 PR / Release 附证。</p>
+        <ol class="steps glass-card">
+          <li>
+            <h3>1 · 克隆本仓</h3>
+            <pre><code>git clone https://github.com/xyan8921/Intdeck-Baseline.git
+cd Intdeck-Baseline
+npm ci</code></pre>
+          </li>
+          <li>
+            <h3>2 · Run gates（本仓 CI 等价）</h3>
+            <pre><code>npm run lint
+npm test
+npm run redteam:v0</code></pre>
+          </li>
+          <li>
+            <h3>3 · 证据文件（主仓 Agent CLI 路径）</h3>
+            <pre><code># Intdone 主仓：
+npm run intdeck:agent -- gates --outDir=out/intdeck-agent-cli
+# 人读 evidence.summary.md · 机器 evidence.manifest.json</code></pre>
+            <figure class="evidence-placeholder glass-card" aria-label="证据包截图占位">
+              <p><strong>截图位</strong>：<code>gates.summary.json</code> / <code>evidence.summary.md</code> 摘要（维护者随 Release 更新）</p>
+            </figure>
+          </li>
+          <li>
+            <h3>4 · 只读回放（可选）</h3>
+            <pre><code>npm run intdeck:agent -- replay --last=1</code></pre>
+          </li>
+        </ol>
+        <div class="glass-card fail-example" role="note">
+          <strong>Fail-closed 示例</strong>
+          <p>
+            <code>redteam:v0</code>：stage0 禁用 LLM 时拒绝调用；
+            <code>runOutbound</code> 未确认 → <code>confirmation required</code>。
+          </p>
+        </div>
+      </section>
+
+      <section id="docs">
+        <h2>文档索引</h2>
+        <p class="section-lead">深度阅读；品牌与边界摘要见 <a href="https://www.intdeck.com">www.intdeck.com</a>。</p>
+        <div class="grid-3">
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/ETHICS.md">
+            <h3>ETHICS.md</h3>
+            <p>伦理宪章 E1–E7</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/docs/INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md">
+            <h3>威胁模型 v0</h3>
+            <p>红队闸门 · T6 供应链</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/SECURITY.md">
+            <h3>SECURITY.md</h3>
+            <p>漏洞私密上报</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/CONTRIBUTING.md">
+            <h3>CONTRIBUTING.md</h3>
+            <p>PR · Skill 贡献</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/docs/INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md">
+            <h3>仓库边界 v1</h3>
+            <p>双向断交说明</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/docs/INTDONE_INTDECK_ARCHITECTURE_AND_TECH_DESIGN_v1.md">
+            <h3>架构 v1</h3>
+            <p>技术设计白皮书</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/docs/INTDECK_DEV_NON_TECHNICAL_HANDBOOK_v1.md">
+            <h3>非技术说明书</h3>
+            <p>用户向说明</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/GOVERNANCE.md">
+            <h3>GOVERNANCE</h3>
+            <p>维护者与发布</p>
+          </a>
+          <a class="glass-card dest-card" href="https://github.com/xyan8921/Intdeck-Baseline/tree/main/docs">
+            <h3>docs/</h3>
+            <p>全部 Intdeck 文档</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="roadmap">
+        <h2>社区路线图</h2>
+        <p class="section-lead">观察期 Pin：<a href="https://github.com/xyan8921/Intdeck-Baseline/issues/14">Issue #14</a>（P0 CI / 密钥扫描已完成）。</p>
+        <div class="glass-card">
+          <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+            <li>P1 · <a href="https://github.com/xyan8921/Intdeck-Baseline/issues/10">#10</a> 首份季度 meta</li>
+            <li>P1 · <a href="https://github.com/xyan8921/Intdeck-Baseline/issues/11">#11</a> 门户 docs（本页 v0.2）</li>
+            <li>P2 · <a href="https://github.com/xyan8921/Intdeck-Baseline/issues/12">#12</a> v0.2.0 投放流程</li>
+            <li>P2 · <a href="https://github.com/xyan8921/Intdeck-Baseline/issues/13">#13</a> contributor skill 示例</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="boundary">
+        <h2>写死边界</h2>
+        <p class="section-lead">与 <a href="https://www.intdeck.com#boundary">www.intdeck.com</a> 同源；本页展开对照表。</p>
+        <ul class="boundary-rules glass-card">
+          <li>
+            <strong>1 · Baseline 永久开源（MIT）</strong>
+            <span class="lang-zh">社区在 Intdeck-Baseline 自治演进；发行以 tag 与 Release notes 为准。</span>
+            <span class="lang-en">Baseline stays open source (MIT) — Community evolves in Intdeck-Baseline; releases are tag + Release notes.</span>
+          </li>
+          <li>
+            <strong>2 · 代码单向断交</strong>
+            <span class="lang-zh">不得 merge 回 Intdone；主仓仅 export 投放；禁止批量 cherry-pick 回流。</span>
+            <span class="lang-en">One-way code boundary — No merge from Baseline into closed Intdone. Export-only tags. No bulk cherry-pick merge-back.</span>
+          </li>
+          <li>
+            <strong>3 · 非实时同源</strong>
+            <span class="lang-zh">冻结快照，非 Dev 实时镜像；Console 闭源，无 git 合并。</span>
+            <span class="lang-en">Not live-synced — Frozen subset snapshot. Console closed-source, not git-merged.</span>
+          </li>
+        </ul>
+        <details class="glass-card boundary-details">
+          <summary>维度对照表（中英）Dimension × Repository</summary>
+          <div class="table-wrap" style="margin-top: 0.75rem; border: none;">
+            <table>
+              <thead>
+                <tr>
+                  <th>维度</th>
+                  <th>Baseline（OSS）</th>
+                  <th>Intdone（闭源）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Repository</td>
+                  <td><code>xyan8921/Intdeck-Baseline</code></td>
+                  <td><code>xyan8921/Intdone</code></td>
+                </tr>
+                <tr>
+                  <td>Code flow</td>
+                  <td>仅接收 export</td>
+                  <td>不接收 Baseline 回流</td>
+                </tr>
+                <tr>
+                  <td>Scope</td>
+                  <td><code>src/core</code>、CLI、威胁文档</td>
+                  <td>C/B、<code>/dev</code>、Console、商业连接器</td>
+                </tr>
+                <tr>
+                  <td>Public entry</td>
+                  <td><code>www.baseline.intdeck.com</code></td>
+                  <td><code>www.intdone.com</code> · 品牌 <code>www.intdeck.com</code></td>
+                </tr>
+                <tr>
+                  <td>Alignment</td>
+                  <td colspan="2">季度 meta — not daily code sync</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <p class="footer-disclaimer glass-card">
+          <span class="lang-zh">本门户不是 Agent 聊天产品，也不是 Intdone 产品首页。</span>
+          <span class="lang-en">This portal is not a chat product and not the Intdone product homepage.</span>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav class="footer-links" aria-label="页脚">
+        <a href="https://github.com/xyan8921/Intdeck-Baseline">GitHub</a>
+        <a href="https://github.com/xyan8921/Intdeck-Baseline/blob/main/SECURITY.md">SECURITY</a>
+        <a href="https://www.intdeck.com">www.intdeck.com</a>
+        <a href="https://github.com/xyan8921/Intdeck-Baseline/issues/14">#14</a>
+      </nav>
+      <p>Intdeck Baseline · MIT · www.baseline.intdeck.com</p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'intdeck-baseline-theme';
+      var root = document.documentElement;
+      function apply(t) {
+        root.classList.toggle('dark', t === 'dark');
+        try { localStorage.setItem(KEY, t); } catch (e) {}
+      }
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      if (saved === 'dark' || saved === 'light') apply(saved);
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) apply('dark');
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        apply(root.classList.contains('dark') ? 'light' : 'dark');
+      });
+    })();
+  </script>
 </body>
 </html>

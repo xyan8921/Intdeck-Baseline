@@ -1,58 +1,83 @@
-# Intdeck baseline（开源冻结基线）
+# Intdeck Baseline
 
-> 本文件是 **baseline 独立仓库**的 `README.md` 模板（v0）。  
-> 在拆仓时从主仓库导出后，请将本文件内容复制/重命名为 baseline 仓库根目录的 `README.md`。
-
----
-
-## 1. 这是什么
-
-**Intdeck baseline** 是 Intdone 主仓库 Dev 端能力谱系中抽取的 **冻结开源基线**：提供“可审计的底盘”（G0 + 统一审计 + 最小威胁基准 + 红队闸门），用于社区自治与公众监督。
-
-它不是完整产品，也不包含 C/B 产品通路或 UI。
+> **开源主场**：https://www.baseline.intdeck.com · **品牌入口**：https://www.intdeck.com  
+> **仓库**：https://github.com/xyan8921/Intdeck-Baseline · **路线图**：[Issue #14](https://github.com/xyan8921/Intdeck-Baseline/issues/14)
 
 ---
 
-## 2. 边界与承诺
+## L1 · 是什么
 
-- **两套实体**：主系统 Dev 端 vs baseline（详见 `INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md`）。
-- **代码路径断交**：baseline 与商业主系统不做双向合并/同步。
-- **季度 meta 披露**：只对齐安全与契约元信息，不构成管理策略。
+**Intdeck is not trying to build smarter agents. It is trying to build governable intelligence infrastructure.**
 
----
+**Intdeck 不是在比 Agent 有多聪明，而是在做可治理、可审计的智能基础设施。**
 
-## 3. 目录结构（baseline）
+冻结开源治理子集（`src/core` + 文档 + 红队闸门），供社区自治与公众监督；**不是**完整产品、**不是** Console、**不是** Intdone 产品首页。
 
-- `src/core/**`：治理/审计/执行/策略/伦理/经验存储/红队闸门等核心代码
-- `docs/`：Intdeck 架构、边界与威胁模型白皮书
-- `ETHICS.md`：伦理宪章
-- `LICENSE`：许可（baseline 仓库可替换为专用许可）
+**[Run gates →](#l2--quick-start)**
 
 ---
 
-## 4. 如何运行
+## L2 · Quick Start
 
-**环境**：Node ≥ 18（CI 使用 22）。与主仓一致用 `npm ci` 锁定依赖。
+与 [www.intdeck.com](https://www.intdeck.com#quickstart) 相同的四步；本仓 CI 等价命令如下。
 
 ```bash
+git clone https://github.com/xyan8921/Intdeck-Baseline.git
+cd Intdeck-Baseline
 npm ci
 npm run lint
 npm test
 npm run redteam:v0
 ```
 
-PR 与 `main` 推送会跑 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)（同上顺序）。
+**Fail-closed 一行**：`redteam:v0` 在 stage0 禁用 LLM 时拒绝调用；`runOutbound` 未确认时抛出 `confirmation required`。
 
-> `src/config/`、`src/shared/utils/` 等为 `src/core` 测试契约所需的最小 shim，不在主仓 baseline 导出 allowlist 内，由本仓维护。
+Intdone 主仓完整 Agent 证据路径：`npm run intdeck:agent -- gates --outDir=out/intdeck-agent-cli`（含 `evidence.summary.md` / `gates.summary.json`）。
+
+PR 与 `main` 推送跑 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)。
 
 ---
 
-## 5. 用户向说明书（建议落位）
+## 写死边界（摘要）
 
-拆仓后可将主仓 `docs/INTDECK_DEV_NON_TECHNICAL_HANDBOOK_v1.md` 复制到本仓 `docs/`，并替换文内仓库 URL 与维护者联系方式。
+| # | 中文 | English |
+|---|------|---------|
+| 1 | Baseline 永久开源（MIT）— 社区在 Intdeck-Baseline 自治；发行以 tag + Release notes 为准。 | Baseline stays open source (MIT) — Community evolves here; releases are tag + Release notes. |
+| 2 | 代码单向断交 — 不得 merge 回 Intdone；主仓仅 export 投放；禁止社区实现批量 cherry-pick 回流。 | One-way code boundary — No merge into closed Intdone. Export-only tags. No bulk cherry-pick merge-back. |
+| 3 | 非实时同源 — 冻结快照，非 Dev 实时镜像；Console 闭源，无 git 合并。 | Not live-synced — Frozen subset snapshot. Console closed-source, not git-merged. |
 
-## 6. 安全与披露
+| 维度 | Baseline（OSS） | Intdone（闭源） |
+|------|-----------------|-----------------|
+| Repository | `xyan8921/Intdeck-Baseline` | `xyan8921/Intdone` |
+| Code flow | 仅接收主仓 export | 不接收 Baseline 回流 |
+| Scope | `src/core`、CLI、威胁文档 | C/B、`/dev`、Console、商业连接器 |
+| Public entry | www.baseline.intdeck.com | www.intdone.com · 品牌 www.intdeck.com |
+| Alignment | 季度 meta 披露 — 非日常代码 sync | 同左 |
 
-- 漏洞上报与响应策略：见 `SECURITY.md`  
-- 红队闸门（最小集）：见 `src/core/redteam/*` 与 `docs/INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md`
+---
 
+## L3 · 深度文档
+
+| 文档 | 说明 |
+|------|------|
+| [ETHICS.md](./ETHICS.md) | 伦理宪章 |
+| [SECURITY.md](./SECURITY.md) | 漏洞上报 |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | 贡献与 Skill |
+| [GOVERNANCE.md](./GOVERNANCE.md) | 维护者与发布 |
+| [docs/INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md](./docs/INTDONE_INTDECK_THREAT_MODEL_WHITEPAPER_v0.md) | 威胁模型 |
+| [docs/INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md](./docs/INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md) | 仓库边界 |
+| [docs/INTDONE_INTDECK_ARCHITECTURE_AND_TECH_DESIGN_v1.md](./docs/INTDONE_INTDECK_ARCHITECTURE_AND_TECH_DESIGN_v1.md) | 架构 |
+| [docs/](./docs/) | 全部 Intdeck 文档 |
+
+移交说明见主仓 `INTDECK_BASELINE_HANDOFF_TO_COMMUNITY_v1.md`（闭源 `docs/`）。
+
+---
+
+## 目录结构
+
+- `src/core/**` — 治理 / 审计 / 红队闸门
+- `docs/` — 白皮书与边界
+- `apps/baseline-site/` — 本门户静态站（Vercel Root Directory）
+- `skills/core/` · `skills/contributor/` — Skill 目录
+
+> `src/config/`、`src/shared/utils/` 为测试契约 shim，由本仓维护。
