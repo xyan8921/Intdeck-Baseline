@@ -1,7 +1,7 @@
-# GOVERNANCE（baseline 模板）
+# GOVERNANCE
 
-> 本文件是 **baseline 独立仓库**的 `GOVERNANCE.md` 模板（v0）。  
-> 拆仓后请复制/重命名为 baseline 仓库根目录的 `GOVERNANCE.md`。
+> 适用于 **Intdeck-Baseline** 开源仓（`xyan8921/Intdeck-Baseline`）。  
+> 不约束意达 Intdone 商业主系统（`xyan8921/Intdone`）内部研发管理。
 
 ---
 
@@ -30,14 +30,28 @@
 
 ## 4. 发布与 meta 披露
 
-- baseline 以 tag/release 形式发布（建议 semver）
-- 每季度至少一次 meta 披露（或随 minor release），内容见 `INTDONE_INTDECK_BASELINE_EXPORT_GUIDE_v1.md` §5
+- baseline 以 **tag + GitHub Release** 形式发布（semver）
+- 每季度至少一次 meta 披露（或随 **minor** 发布前），实例见 [`docs/meta/`](docs/meta/)
+- 披露模板：[`docs/INTDONE_INTDECK_QUARTERLY_META_DISCLOSURE_TEMPLATE_v1.md`](docs/INTDONE_INTDECK_QUARTERLY_META_DISCLOSURE_TEMPLATE_v1.md)
+
+### 4.1 投放节奏（主仓 export → 本仓 tag）
+
+与 [`docs/INTDONE_INTDECK_BASELINE_EXPORT_GUIDE_v1.md`](docs/INTDONE_INTDECK_BASELINE_EXPORT_GUIDE_v1.md) 对齐；**无双向 merge**。
+
+1. **意达 Intdone 主仓**（`xyan8921/Intdone`）：`npm run export:intdeck-baseline` + `npm run scan:baseline-secrets`（粗扫）
+2. 审阅 `config/intdeck-baseline-export.json` allowlist diff 与 `baseline.manifest.json`
+3. 更新 Release notes（威胁面、schema、依赖）与季度 meta（若跨季）
+4. **本仓**打 tag（例 `v0.2.0` minor）并 GitHub Release；门户/README 同步版本文案
+5. **禁止**将 baseline 社区 PR 实现批量 cherry-pick 回闭源主仓
+
+下一档里程碑：**`v0.2.0`**（核心 minor，日期由维护者定）。
 
 ---
 
 ## 5. Skill 目录（社区贡献）
 
 - 目录：`skills/core/`（维护者）、`skills/contributor/`（社区 PR）
-- 治理全文见主仓 `INTDECK_BASELINE_SKILLS_GOVERNANCE_v0.md`（拆仓时复制到本仓 `docs/` 或链接）
+- 治理全文：[`docs/INTDECK_BASELINE_SKILLS_GOVERNANCE_v0.md`](docs/INTDECK_BASELINE_SKILLS_GOVERNANCE_v0.md)
 - **商业 Intdone 不 merge** `skills/contributor/**` 实现代码；升格至 `skills/core/` 须 Maintainers 评审与 release notes
+- 示例：[`skills/contributor/example-boundary-reminder/`](skills/contributor/example-boundary-reminder/)
 

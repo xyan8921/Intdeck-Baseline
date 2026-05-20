@@ -1,14 +1,13 @@
-# CONTRIBUTING（baseline 模板）
+# CONTRIBUTING
 
-> 本文件是 **Intdeck baseline 独立仓库**根目录 `CONTRIBUTING.md` 的 v0 模板。  
-> 拆仓后请复制到 baseline 仓库根目录并按实际维护者/流程改写。
+> **Intdeck（意得）Baseline** 开源仓贡献说明。与 **Intdone（意达）** 商业主系统无双向 merge。
 
 ---
 
 ## 范围
 
-- 本仓库为 **开源冻结基线**（MIT），与 Intdone 商业主系统 **无双向代码 merge**（见主仓 `INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md` §4）。
-- 贡献应限于 **底盘**（治理、审计 schema、红队闸门、文档）；不引入商业客户数据或内部运营资产。
+- 本仓库为 **开源冻结基线**（MIT），与 Intdone 商业主系统 **无双向代码 merge**（见 [`docs/INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md`](docs/INTDONE_INTDECK_BASELINE_AND_REPO_BOUNDARY_v1.md) §4）。
+- 贡献应限于 **底盘**（治理、审计 schema、红队闸门、文档、门户静态站）；不引入商业客户数据或内部运营资产。
 
 ---
 
@@ -28,8 +27,16 @@
 
 ---
 
+## Skill 贡献（`skills/contributor/`）
+
+1. 在 `skills/contributor/<your-skill>/` 下提供 **可复核** 产物（README + 静态配置/清单；避免未披露出站）。
+2. 参考示例：[`skills/contributor/example-boundary-reminder/`](skills/contributor/example-boundary-reminder/)。
+3. PR 须声明：不请求 merge 回 `xyan8921/Intdone`；伦理约束见 [`ETHICS.md`](ETHICS.md) 与 [`docs/INTDECK_BASELINE_SKILLS_GOVERNANCE_v0.md`](docs/INTDECK_BASELINE_SKILLS_GOVERNANCE_v0.md)。
+4. 若改动 `src/core` 或红队类别，须跑通 `npm run redteam:v0` 并更新威胁模型相关章节。
+
 ## 关联
 
-- `GOVERNANCE.md`（治理与决策）  
-- `SECURITY.md`（漏洞报告）  
-- 主仓拆仓清单：`INTDONE_INTDECK_BASELINE_SPLIT_AND_META_SYNC_CHECKLIST_v1.md` §2
+- [`GOVERNANCE.md`](GOVERNANCE.md)（治理、投放节奏）  
+- [`SECURITY.md`](SECURITY.md)（漏洞报告）  
+- [`docs/meta/`](docs/meta/)（季度 meta）  
+- 门户：[`apps/baseline-site/`](apps/baseline-site/)
