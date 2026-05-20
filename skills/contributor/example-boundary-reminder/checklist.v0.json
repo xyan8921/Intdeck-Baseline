@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "contributor/example-boundary-reminder",
+  "title": "Baseline PR boundary self-check",
+  "titleZh": "Baseline PR 边界自检",
+  "ethicalPrinciples": ["E6"],
+  "requiresNetwork": false,
+  "items": [
+    {
+      "id": "no-merge-back",
+      "zh": "本 PR 不包含将 Baseline 实现 merge 回 Intdone 闭源主仓的诉求或路径。",
+      "en": "This PR does not merge Baseline implementation back into closed Intdone."
+    },
+    {
+      "id": "no-secrets",
+      "zh": "未提交 .env、密钥、token 或客户运营数据。",
+      "en": "No .env, secrets, tokens, or customer ops data committed."
+    },
+    {
+      "id": "no-egress",
+      "zh": "未新增未披露的远程下载、插件市场或默认开放的出站执行。",
+      "en": "No undisclosed remote fetch, plugin market, or default-open outbound execution."
+    },
+    {
+      "id": "tests",
+      "zh": "已本地或 CI 跑通 lint / test / redteam:v0（若改动 src/core）。",
+      "en": "lint / test / redteam:v0 passed locally or in CI (if src/core changed)."
+    }
+  ]
+}
