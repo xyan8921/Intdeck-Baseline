@@ -2,7 +2,7 @@
 
 > **品牌**：英文 **Intdeck** · 中文 **意得**（与产品主品牌 Intdone / **意达** 区分）  
 > **开源主场**：https://www.baseline.intdeck.com · **品牌入口**：https://www.intdeck.com  
-> **仓库**：https://github.com/xyan8921/Intdeck-Baseline · **路线图**：[Issue #14](https://github.com/xyan8921/Intdeck-Baseline/issues/14)
+> **仓库**：https://github.com/xyan8921/Intdeck-Baseline · **路线图**：[Issue #14](https://github.com/xyan8921/Intdeck-Baseline/issues/14)（观察期已收尾 → [`docs/B4_OBSERVATION_CLOSEOUT_2026Q2.md`](docs/B4_OBSERVATION_CLOSEOUT_2026Q2.md)）
 
 门户与 www 同系视觉；页面语言/主题默认跟随系统（顶栏可切换 EN/中文、亮/暗）。
 
