@@ -1,0 +1,14 @@
+{
+  "name": "intdeck-baseline-site",
+  "version": "0.1.2",
+  "description": "Intdeck Baseline portal site",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "preview": "npx serve ."
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
